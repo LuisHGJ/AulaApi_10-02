@@ -1,0 +1,11 @@
+GET https://curly-space-spork-5jxw76v5w6j3p4wp-8080.app.github.dev/tarefas
+
+###
+
+POST http://localhost:8080/tarefas
+Content-Type: application/json
+
+{
+    "id": 2,
+    "descricao": "Novo Objeto"
+}
