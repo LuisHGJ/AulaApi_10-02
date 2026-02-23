@@ -11,8 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.web.bind.annotation.PathVariable;
 
-import app.model.Tarefa;
-import app.repository.TarefaRepository;
+import app.model.Genero;
+import app.repository.GeneroRepository;
 
 import java.util.Optional;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -20,35 +20,35 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.DeleteMapping;
 
 @RestController
-@RequestMapping("/tarefas")
-public class TarefasController {
+@RequestMapping("/generos")
+public class GeneroController {
     @Autowired
-    private TarefaRepository tarefaRepo;
+    private GeneroRepository generoRepo;
 
     @GetMapping
-    public Iterable<Tarefa> list() {
-        return tarefaRepo.findAll();
+    public Iterable<Genero> list() {
+        return generoRepo.findAll();
     }
 
     @GetMapping("/{id}")
-    public Tarefa getOne(@PathVariable long id) {
-        return tarefaRepo.findById(id).get();
+    public Genero getOne(@PathVariable long id) {
+        return generoRepo.findById(id).get();
     }
 
     @PostMapping
-    public Tarefa insert(@RequestBody Tarefa novaTarefa) {
-        return tarefaRepo.save(novaTarefa);
+    public Genero insert(@RequestBody Genero novoGenero) {
+        return generoRepo.save(novoGenero);
     }
 
     @PutMapping("/{id}")
-    public Tarefa update(@PathVariable long id, @RequestBody Tarefa modif){
-        Optional<Tarefa> busca = tarefaRepo.findById(id);
-        busca.get().setDescricao(modif.getDescricao());
-        return tarefaRepo.save(busca.get());
+    public Genero update(@PathVariable long id, @RequestBody Genero modif){
+        Optional<Genero> busca = generoRepo.findById(id);
+        busca.get().setNome(modif.getNome());
+        return generoRepo.save(busca.get());
     }
 
     @DeleteMapping("/{id}")
     public void delete(@PathVariable long id) {
-        tarefaRepo.deleteById(id);
+        generoRepo.deleteById(id);
     }
 }

@@ -1,4 +1,4 @@
-@url = http://127.0.0.1:8080/tarefas
+@url = http://127.0.0.1:8080/generos
 GET {{url}}
 
 ###
@@ -10,7 +10,7 @@ Content-Type: application/json
 
 {
     "id" : 0,
-    "descricao" : "Estudar para prova"
+    "nome" : "suspense"
 }
 
 ###
@@ -19,7 +19,7 @@ Content-Type: application/json
 
 {
     "id" : 0,
-    "descricao" : "Estudar para prova - Modificado"
+    "nome" : "romance"
 }
 
 ###
