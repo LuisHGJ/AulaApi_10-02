@@ -11,10 +11,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.web.bind.annotation.PathVariable;
 
-import app.model.Genero;
-import app.repository.GeneroRepository;
+import app.record.GeneroDTO;
+import app.record.GeneroInsertDTO;
+import app.services.GeneroService;
 
-import java.util.Optional;
 import org.springframework.web.bind.annotation.PutMapping;
 
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -23,32 +23,30 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 @RequestMapping("/generos")
 public class GeneroController {
     @Autowired
-    private GeneroRepository generoRepo;
+    private GeneroService generoService;
 
     @GetMapping
-    public Iterable<Genero> list() {
-        return generoRepo.findAll();
+    public Iterable<GeneroDTO> list() {
+        return generoService.findAll();
     }
 
     @GetMapping("/{id}")
-    public Genero getOne(@PathVariable long id) {
-        return generoRepo.findById(id).get();
+    public GeneroDTO getOne(@PathVariable long id) {
+        return generoService.findOne(id);
     }
 
     @PostMapping
-    public Genero insert(@RequestBody Genero novoGenero) {
-        return generoRepo.save(novoGenero);
+    public GeneroDTO insert(@RequestBody GeneroInsertDTO novoGenero) {
+        return generoService.insert(novoGenero);
     }
 
     @PutMapping("/{id}")
-    public Genero update(@PathVariable long id, @RequestBody Genero modif){
-        Optional<Genero> busca = generoRepo.findById(id);
-        busca.get().setNome(modif.getNome());
-        return generoRepo.save(busca.get());
+    public GeneroDTO update(@PathVariable long id, @RequestBody GeneroInsertDTO modif){
+        return generoService.update(id, modif);
     }
 
     @DeleteMapping("/{id}")
     public void delete(@PathVariable long id) {
-        generoRepo.deleteById(id);
+        generoService.delete(id);
     }
 }

@@ -2,25 +2,23 @@
 GET {{url}}
 
 ###
-GET {{url}}/1
+GET {{url}}/4
 
 ###
 POST {{url}}
 Content-Type: application/json
 
 {
-    "id" : 0,
-    "nome" : "suspense"
+    "nome" : "oi"
 }
 
 ###
-PUT {{url}}/1
+PUT {{url}}/4
 Content-Type: application/json
 
 {
-    "id" : 0,
     "nome" : "romance"
 }
 
 ###
-DELETE {{url}}/1
+DELETE {{url}}/4
